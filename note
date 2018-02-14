@@ -1,0 +1,85 @@
+why won't it recognize the . notation in some datasets
+lab 1, part i, stretch
+lab 2, part 2, stretch goal
+lab 2, part 3
+
+
+INDEXOF
+WHEN DO YOU NEED RETURN VS NOT
+HOW CAN YOU NAME A FUNCTION
+DECLARING SOMETHING AS BLANK
+$ =
+| =
+= versus ; in vars
+
+why var ; instead of var =
+
+Want as much referntial transparency as possible
+
+UNDERSCORE
+ISODD?
+CONTEXT?
+
+ternary if
+var x = true ? 1:2
+  >>>>> This means that if true 1, if not true, 2.
+
+function valueIf (condition, ifVal, elseVal) {
+if (condition) {return ifVal} else {return elseVal}
+}
+
+var y = valueIf (true, 1:2)
+
+
+UNDERSCORE
+PREDICATE = RETURNS TRUE OR FALSE
+FINDS FIRST THAT MEETS PREDICATE
+_.find(list, predicate, [context])
+var arr = [1,2,3,4]
+_.find(arr,_.isOdd)
+
+var fruits = [{name: 'banana', color: 'yellow'}, {name:'apple', color:'red'}]
+
+_.findWhere (fruits, {'name':'banana'})
+
+_.groupBy (arr, function (num) { if (num%2==1) { return "odd"} else {return "even"}})
+_.sortBy will do the same thing but return them in alphabetical/numerical order
+
+var fruits = [{name: 'banana', color: 'yellow'}, {name:'apple', color:'red'}]
+_.forEach (fruits, function (fruit) {console.log (fruit.name)})
+Will loop through
+
+var fruits = [{name: 'banana', color: 'yellow'}, {name:'apple', color:'red'}]
+_.map (fruits, function (fruit) {console.log (fruit.name)})
+Will do the same thing but map is "referentially transparent" it expects each function that it applies to tranform
+the underlying value
+
+_.map (fruits, function (fruit) {return (fruit.name)})
+This is different because it is transforming the data
+
+_.reduce also v valuable
+
+JQuery
+$. = JQuery (leaflet is the L.)
+.get is the same thing as .ajax
+var x = $.ajax(LINK TO RAW JSON FILE in QUOTES)
+Produces a "promise" of a future variable, have to create a variable to store it
+(call x) to inspect it
+
+.then =  when a promise is fulfilled it will call the function to then with the response data
+res = response
+x.then(function(res) {console.log(JSON.parse(res)})
+
+A common use of JSON is to exchange data to/from a web server. When receiving data from a web server,
+the data is always a string. Parse the data with JSON.parse(), and the data becomes a JavaScript object.
+
+Ajax is difficult because you have to create a placeholder within a function so that you can pull
+data that you don't yet have and save it outside of a function so in
+x.then (function (res) {PLACEHOLDER = json.parse(res)})
+instead of console.log and you can't return, then you set an empty variable to fill in as a placeholder
+
+Try to get the first value
+var placeholder = undefined;
+promise.then (function(res) {placeholder (JSON.parse(res)}).then(function)
+var testFunc = function (list {console.log (list[0])})
+testFunc (placeholder)

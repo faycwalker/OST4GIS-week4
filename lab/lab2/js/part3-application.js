@@ -19,14 +19,31 @@
     to this boolean? (Try to think about how you could chop up this data to make this meaningful.)
     There is a string field: can you write your code to filter/search based on user
     input?
+    
+    $('button#my-button').click(function(e) {
+      numericField1 = $('#num1').val();
+      console.log("numericField1", numericField1);
+
+      numericField2 = $('#num2').val();
+      console.log("numericField2", numericField2);
+
+      booleanField = $('#boolean')[0].checked;
+      console.log("booleanField", booleanField);
+
+      stringField = $('#string').val();
+      console.log("stringField", stringField);
 
   Remember, this is open-ended. Try to see what you can produce.
 ===================== */
+var getAndParseData = $.ajax ("https://raw.githubusercontent.com/CPLN-692-401/datasets/master/json/philadelphia-solar-installations.json")
 
 /* =====================
   Define a resetMap function to remove markers from the map and clear the array of markers
 ===================== */
-var resetMap = function() {
+var resetMap = function(list) {
+  return _.map (list, function (marker) {map.removeLayer (marker)})
+};
+
   /* =====================
     Fill out this function definition
   ===================== */
@@ -37,7 +54,8 @@ var resetMap = function() {
   will be called as soon as the application starts. Be sure to parse your data once you've pulled
   it down!
 ===================== */
-var getAndParseData = function() {
+var getAndParseData = function (data){return JSON.parse(data)}
+
   /* =====================
     Fill out this function definition
   ===================== */
@@ -47,7 +65,9 @@ var getAndParseData = function() {
   Call our plotData function. It should plot all the markers that meet our criteria (whatever that
   criteria happens to be — that's entirely up to you)
 ===================== */
-var plotData = function() {
+var plotData = function(list) {
+    return _.map(list, function (marker) {marker.addTo(map)})
+  };
   /* =====================
     Fill out this function definition
   ===================== */

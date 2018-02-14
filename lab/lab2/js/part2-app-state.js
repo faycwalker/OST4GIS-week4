@@ -30,20 +30,40 @@
          return 1;
        }
        var one = justOne();
-===================== */
+
+
+       downloadData.done(function(data) {
+         var parsed = parseData(data);
+         var markers = makeMarkers(parsed);
+         plotMarkers(markers);
+         removeMarkers(markers);
+       });
+       var solarInstall = $.ajax ("https://raw.githubusercontent.com/CPLN-692-401/datasets/master/json/philadelphia-solar-installations.json")
+       solarInstall.then(function(res) {console.log(JSON.parse(res))})
+
+     ===================== */
 
 // Use the data source URL from lab 1 in this 'ajax' function:
-var downloadData = $.ajax("http://");
+var downloadData = $.ajax ("https://raw.githubusercontent.com/CPLN-692-401/datasets/master/json/philadelphia-solar-installations.json")
 
 // Write a function to prepare your data (clean it up, organize it as you like, create fields, etc)
-var parseData = function() {};
+var parseData = function (data){return JSON.parse(data)}
 
 // Write a function to use your parsed data to create a bunch of marker objects (don't plot them!)
-var makeMarkers = function() {};
+/*var makeMarkers = function (parseData) {return (L.marker ([parseData.CapitalLatitude, parseData.CapitalLongitude]))}
+*/
+var makeMarkers = function (object) {
+  return _.map (object, function (item) {
+    return L.marker ([item.LAT, item.LONG_]);});
+};
 
 // Now we need a function that takes this collection of markers and puts them on the map
-var plotMarkers = function() {};
 
+var plotMarkers = function(list) {
+  return _.map(list, function (marker) {marker.addTo(map)})
+};
+
+//makeMarkers.addTo(map);
 // At this point you should see a bunch of markers on your map.
 // Don't continue on until you can make them appear!
 
@@ -61,15 +81,31 @@ var plotMarkers = function() {};
 ===================== */
 
 // Look to the bottom of this file and try to reason about what this function should look like
-var removeMarkers = function() {};
+var removeMarkers = function(list) {
+  return _.map(list, function (marker) {map.removeLayer (marker)})
+};
 
 /* =====================
   Optional, stretch goal
   Write the necessary code (however you can) to plot a filtered down version of
   the downloaded and parsed data.
+*/
+var makeNew = function (object) {
+  return _.map (object, function (item) {
+    if (item.YEARBUILT >= 2008) {
+    return L.marker ([item.LAT, item.LONG_])};
+  });
+};
 
-  Note: You can add or remove from the code at the bottom of this file for the stretch goal.
-===================== */
+var newMarkers = function (list){
+  return _.map (list, function (marker) {
+    if (item.YEARBUILT >= 2008) {
+    marker.addTo(map)
+  };
+});
+};
+
+
 
 /* =====================
  Leaflet setup - feel free to ignore this

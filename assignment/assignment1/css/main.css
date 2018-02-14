@@ -7,7 +7,6 @@ body {
     overflow: hidden;
     font-family: helvetica, arial, sans-serif;
 }
-
 .map {
     position: absolute;
     right: 0px;
@@ -15,7 +14,6 @@ body {
     height: 100%;
     top: 0;
 }
-
 .sidebar {
     position: absolute;
     left: 0px;
@@ -23,5 +21,34 @@ body {
     top: 0;
     bottom: 0;
     overflow-y: auto;
-    padding: 20px;
+    padding: 40px;
+    font-family: Helvetica, Sans-Serif;
+    color: #444444;
+    font-size: 11pt;
+    background-color: #FAFAFA;
+}
+.school {
+    padding: 40px;
+    font-family: Helvetica, Sans-Serif;
+    color: #444444;
+    font-size: 11pt;
+    background-color: #ffa7a7;
+    border: 5px solid #5d8aa8;
+    margin-bottom: 25px;
+}
+.school_title {
+  font-family: Helvetica, Sans-Serif;
+  font-weight: bold;
+  color: #444444;
+  font-size: 11pt;
+  }
+  .school_type {
+  font-family: Helvetica, Sans-Serif;
+  color: #444444;
+  font-size: 11pt;
+}
+.school_address {
+  font-family: Helvetica, Sans-Serif;
+  color: #5d8aa8;
+  font-size: 11pt;
 }
